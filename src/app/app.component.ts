@@ -10,17 +10,12 @@ export class AppComponent {
   public title: string;
   public student: Array<any>;
   public user: Array<any>;
-  public error: boolean;
+  public error: boolean | undefined;
 
   constructor() {
-    this.title = 'danh sách sinh viên'
+    this.title = 'lab 1'
     this.student = student();
     this.user = user();
-    this.error = false;
-  }
-
-  handlerRemove(id: number) {
-    this.student = this.student.filter(item => item.id !== id);
   }
 
   handlerRemoveUser(id: number, canNang: number) {
@@ -29,7 +24,11 @@ export class AppComponent {
 
       return;
     }
-    const removeUser = this.user.filter(item => item.id === id);
+    this.error = false;
+    this.user = this.user.filter(item => item.id !== id);
+    setTimeout(() => {
+      this.error = undefined;
+    }, 1000);
   }
 
 }

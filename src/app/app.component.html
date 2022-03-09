@@ -2,38 +2,12 @@
   <div class="text-center">
     <p>{{title}}</p>
   </div>
-  <table class=" table table-hover">
-    <thead>
-      <th>Ten</th>
-      <th>tuổi</th>
-      <th>SDT</th>
-      <th>Email</th>
-      <th>Avatar</th>
-      <th>action</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of student">
-        <td>{{item.name}}</td>
-        <td>{{item.age}}</td>
-        <td>{{item.phone}}</td>
-        <td>{{item.email}}</td>
-        <td> <img [src]="item.avatar"
-            height="100px"
-            width="100px"
-            alt=""> </td>
-        <td><button (click)="handlerRemove(item.id)"
-            class="btn btn-danger"
-            style=" background-color: brown; ">delete</button> </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <br>
-
-  <div class="text-center">
-    <p>bảng user</p>
-  </div>
-  <p *ngIf="error"> cân nặng nhỏ ko được xoá </p>
+  <p *ngIf="error"
+    style="color: red;"> cân nặng nhỏ ko được xoá
+  </p>
+  <p *ngIf="error === false"
+    style="color: green;"> xoá thành công
+  </p>
   <table class="table table-hover">
     <thead>
       <th>id</th>
