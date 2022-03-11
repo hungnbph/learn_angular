@@ -2,6 +2,14 @@
   <div class="text-center">
     <p>{{title}}</p>
   </div>
+  <div class="form-group container">
+    <label for="search">Search</label>
+    <input id="search"
+      class="form-control"
+      type="text"
+      (input)="search($event)">
+  </div>
+
   <p *ngIf="error"
     style="color: red;"> cân nặng nhỏ ko được xoá
   </p>
@@ -18,7 +26,7 @@
       <th>action</th>
     </thead>
     <tbody>
-      <tr *ngFor="let item of user">
+      <tr *ngFor="let item of filterUser">
         <td>{{item.id}}</td>
         <td>{{item.name}}</td>
         <td>{{item.chieuCao}}</td>
@@ -33,4 +41,42 @@
       </tr>
     </tbody>
   </table>
+  <p>add user</p>
+  <form onsubmit="return false">
+    <div class="mb-3">
+      <label for="userName"
+        class="form-label">name</label>
+      <input type="text"
+        class="form-control"
+        id="userName"
+        (input)="onChangeInput($event,'name')">
+    </div>
+    <div class="mb-3">
+      <label for="chieuCao"
+        class="form-label">chiều cao</label>
+      <input type="text"
+        class="form-control"
+        id="chieuCao"
+        (input)="onChangeInput($event, 'chieuCao')">
+    </div>
+    <div class="mb-3">
+      <label for="canNang"
+        class="form-label">cân nặng</label>
+      <input type="text"
+        class="form-control"
+        id="canNang"
+        (input)="onChangeInput($event,'canNang')">
+    </div>
+    <div class="mb-3">
+      <label for="avatar"
+        class="form-label">avatar</label>
+      <input type="text"
+        class="form-control"
+        (input)="onChangeInput($event,'avatar')"
+        id="userName">
+    </div>
+    <button type="submit"
+      class="btn btn-primary"
+      (click)="submit()">Submit</button>
+  </form>
 </div>
