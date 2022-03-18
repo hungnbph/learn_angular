@@ -80,3 +80,37 @@ export const user = () => {
   }
   ]
 }
+
+export const product = () => {
+  return [{
+    id: 1,
+    name: 'iphone',
+    price: 17500000,
+    desc: 'iphone 13 proMax chất lương cao'
+  },
+  {
+    id: 2,
+    name: 'sam sung',
+    price: 12000000,
+    desc: 'sam sung note 10 chất lương cao'
+  },
+  {
+    id: 3,
+    name: 'oppo',
+    price: 4300000,
+    desc: 'oppo chất lương cao'
+  },
+  {
+    id: 4,
+    name: 'galaxy',
+    price: 7400000,
+    desc: 'galaxy chất lương cao'
+  },
+  {
+    id: 5,
+    name: 'ipa',
+    price: 3000000,
+    desc: 'ipa chất lương cao'
+  },
+  ]
+}

@@ -1,0 +1,99 @@
+<div class="container ">
+  <div class="text-center">
+    <p>{{title}}</p>
+  </div>
+  <div class="form-group container">
+    <label for="search">Search</label>
+    <input id="search"
+      class="form-control"
+      type="text"
+      (input)="search($event)">
+  </div>
+
+  <p *ngIf="error"
+    style="color: red;"> cân nặng nhỏ ko được xoá
+  </p>
+  <p *ngIf="error === false"
+    style="color: green;"> xoá thành công
+  </p>
+  <div class="text-center">
+    <p>them moi</p>
+  </div>
+  <form onsubmit="return false">
+    <div class="mb-3">
+      <label for="userName"
+        class="form-label">name</label>
+      <input type="text"
+        class="form-control"
+        id="userName"
+        (input)="onChangeInput($event,'name')"
+        [value]="addUser.name">
+    </div>
+    <div class="mb-3">
+      <label for="chieuCao"
+        class="form-label">chiều cao</label>
+      <input type="text"
+        class="form-control"
+        id="chieuCao"
+        (input)="onChangeInput($event, 'chieuCao')"
+        [value]="addUser.chieuCao">
+    </div>
+    <div class="mb-3">
+      <label for="canNang"
+        class="form-label">cân nặng</label>
+      <input type="text"
+        class="form-control"
+        id="canNang"
+        (input)="onChangeInput($event,'canNang')"
+        [value]="addUser.canNang">
+    </div>
+    <div class="mb-3">
+      <label for="avatar"
+        class="form-label">avatar</label>
+      <input type="text"
+        class="form-control"
+        (input)="onChangeInput($event,'avatar')"
+        [value]="addUser.avatar"
+        id="userName">
+    </div>
+    <button type="submit"
+      *ngIf="!update"
+      class="btn btn-primary"
+      (click)="submit()"
+      [disabled]="!onValid(addUser)">Submit</button>
+    <button type="submit"
+      *ngIf="update"
+      class="btn btn-primary"
+      (click)="submit()">update</button>
+  </form>
+  <table class="table table-hover">
+    <thead>
+      <th>id</th>
+      <th>ten</th>
+      <th>chiều cao</th>
+      <th>cân nặng</th>
+      <th>Avatar</th>
+      <th>action</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of filterUser">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.chieuCao}}</td>
+        <td>{{item.canNang}}</td>
+        <td> <img [src]="item.avatar"
+            height="100px"
+            width="100px"
+            alt=""> </td>
+        <td><button (click)="handlerRemoveUser(item.id, item.canNang)"
+            class="btn btn-danger"
+            style=" background-color: brown; ">delete</button>
+          <button (click)="handlerUpdate(item)"
+            class="btn btn-danger"
+            style=" background-color: brown; ">update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 d-flex align-items-center justify-content-center">
+      <form #productForm="ngForm"
+        (submit)="onsubmit(productForm.value)"
+        action=""
+        class="form">
+        <div class="form-group"
+          style="margin-bottom: 10px;">
+          <span *ngIf="!error.isValid && error.name"
+            style="color: red;">{{error.mes.name}}</span>
+          <input type="text"
+            [ngClass]="{'errorBorder':!error.isValid && error.name}"
+            placeholder="name"
+            class="form-control"
+            name="name"
+            [(ngModel)]="addProduct.name">
+        </div>
+        <div class="form-group"
+          style="margin-bottom: 10px;">
+          <span *ngIf="!error.isValid && error.price"
+            style="color: red;">{{error.mes.price}}</span>
+          <input type="text"
+            [ngClass]="{'errorBorder':!error.isValid && error.price}"
+            placeholder="price"
+            class="form-control"
+            name="price"
+            [(ngModel)]="addProduct.price">
+        </div>
+        <div class="form-group"
+          style="margin-bottom: 10px;">
+          <span *ngIf="!error.isValid && error.desc"
+            style="color: red;">{{error.mes.desc}}</span>
+          <input type="text"
+            [ngClass]="{'errorBorder':!error.isValid && error.desc}"
+            placeholder="desc"
+            class="form-control"
+            name="desc"
+            [(ngModel)]="addProduct.desc">
+        </div>
+        <div>
+          <button type="submit"
+            class="btn btn-danger"
+            *ngIf="!update"> submit </button>
+          <button type="submit"
+            class="btn btn-danger"
+            *ngIf="update"> update </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td>stt</td>
+            <td>tên sẳn phẩm</td>
+            <td> giá sẳn phẩm</td>
+            <td>mô tả sẳn phẩm</td>
+            <td>action</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of product">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.desc}}</td>
+            <td>
+              <button class="btn btn-danger"
+                (click)="handlerRemove(item.id)">
+                delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
